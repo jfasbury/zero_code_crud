@@ -1,0 +1,31 @@
+<h3> List of movies in your library</h3>
+<hr>
+
+<%= link_to 'New Movie', new_movie_path %>
+<hr>
+
+
+<% @movies.each do |movie| %>
+    <div class="span10 hero-unit movie">
+      <div class="title span6" style="float:left;">
+        <strong>Title:</strong> <%= movie.title %>
+      </div>
+      <div class="date span3" style="float: right;">
+        <strong>Date:</strong> <%= movie.release_date %>
+      </div>
+      <div class="rating span9">
+        <strong>Rating:</strong> <%= movie.rating %>
+      </div>
+      <div class="desc span9">
+        <strong>Description:</strong><br>
+        <%= movie.description %>
+      </div>
+      <div class="edit span10" style="text-align: right">
+        <%= link_to 'Edit', edit_movie_path(movie) %>
+        <%= link_to 'Destroy', movie, method: :delete, data: { confirm: 'Are you sure?' } %>
+        <%= link_to 'Show', movie %>
+      </div>
+    </div>
+<% end %>
+
+
